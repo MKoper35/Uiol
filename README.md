@@ -41,3 +41,33 @@
     function balanceOf(address account) public view override returns (uint256) {
         return _balances[account];
     }
+ function MINIMUM_LIQUIDITY() external pure returns (uint);
+  
+    function price1CumulativeLast() external view returns (uint);
+    function kLast() external view returns (uint);
+
+    function mint(address to) external returns (uint liquidity);
+    function burn(address to) external returns (uint amount0, uint amount1);
+    function swap(uint amount0Out, uint amount1Out, address to, bytes calldata data) external;
+    function skim(address to) external;
+    function sync() external;
+
+    function initialize(address, address) external;
+}
+// File: ISwapFactory.sol
+
+
+pragma solidity ^0.8.4;
+
+interface ISwapFactory {
+    function createPair(address tokenA, address tokenB) external returns (address pair);
+    function getPair(address tokenA, address tokenB) external returns (address pair);
+}
+// File: ISwapRouter.sol
+
+
+pragma solidity ^0.8.4;
+
+interface ISwapRouter {
+    
+    function factoryV2() external pure returns (address);
